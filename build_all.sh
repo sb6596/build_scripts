@@ -545,4 +545,24 @@ cd device
 rm -rf $brand
 cd ..
 
-echo "TWRP recovery $twrpver has been successfuly built for all LPAD supported devices!"
+# Gionee M2 specific TWRP build configuration
+
+export device_tree="https://github.com/hejsekvojtech/android_device_gionee_WBW5506.git"
+export brand="gionee"
+export device="WBW5506"
+
+git clone $device_tree -b $branch device/$brand/$device
+. build/envsetup.sh
+lunch omni_$device-eng
+make -j64 recoveryimage
+cd out/target/product/$device
+mv recovery.img twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+cd ../../../..
+make clean
+cd device
+rm -rf $brand
+cd ..
+
+echo "TeamWin Recovery $twrpver has been successfuly built for all LPAD supported devices!"
