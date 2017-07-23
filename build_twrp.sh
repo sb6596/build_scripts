@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Copyright (C) 2017 Liquid Porting And Development
+# Copyright (C) 2017 Liquid Porting & Development
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,17 +31,20 @@ git clone $device_tree -b $branch device/$brand/$device
 # Main building script
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+make -j64 recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 
 # Uploading to MEGA
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 
 # Cleaning the source
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..

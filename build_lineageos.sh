@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Copyright (C) 2017 Liquid Porting And Development
+# Copyright (C) 2017 Liquid Porting & Development
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,18 +38,20 @@ cd device/$brand/$device/patches
 # Main building script
 source build/envsetup.sh
 make update-api
-brunch lineage_$device-userdebug
+brunch lineage_$device-userdebug > lineage_$device.log
 
 date=`date +%Y%m%d`
 
 # Uploading to MEGA
 cd out/target/product/$device
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-$CM_BUILDTYPE-$device.zip.md5sum
+megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS ../../../../lineage_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-$CM_BUILDTYPE-$device.zip
 cd ../../../..
 
 # Cleaning the source
 make clean
+rm lineage_$device.log
 cd device
 rm -rf $brand
 cd ..

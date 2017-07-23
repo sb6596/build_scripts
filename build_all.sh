@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Copyright (C) 2017 Liquid Porting And Development
+# Copyright (C) 2017 Liquid Porting & Development
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 #
 
 # Build script for fully automated Team Win Recovery Project (TWRP) building
-# for all Liquid Porting And Development supported devices.
+# for all Liquid Porting & Development supported devices.
 
 # If you want to add your device to our build rooster, create pull request
 # or contact me at https://www.facebook.com/kh4os
@@ -34,13 +34,16 @@ export device="acer_Z500"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -54,13 +57,16 @@ export device="A328"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -74,13 +80,16 @@ export device="E39"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -94,13 +103,16 @@ export device="S53"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -114,13 +126,16 @@ export device="S55"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -134,13 +149,16 @@ export device="Z520"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -154,13 +172,16 @@ export device="holly"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -174,13 +195,16 @@ export device="X170"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -194,13 +218,16 @@ export device="irisX8"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -214,13 +241,16 @@ export device="A536"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -234,13 +264,16 @@ export device="A3500"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -254,13 +287,16 @@ export device="S650_ROW"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -274,13 +310,16 @@ export device="Q345"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -294,13 +333,16 @@ export device="A33w"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -314,13 +356,16 @@ export device="PSP5504DUO"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -334,13 +379,16 @@ export device="J220"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -354,13 +402,16 @@ export device="V80"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -374,13 +425,16 @@ export device="omega_5_5"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -394,13 +448,16 @@ export device="Aqua_Power_HD"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -414,13 +471,16 @@ export device="htc_a31mg_dug"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -434,13 +494,16 @@ export device="lcsh92_wet_jb9"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -454,13 +517,16 @@ export device="S860"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -474,13 +540,16 @@ export device="K1_turbo"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -494,13 +563,16 @@ export device="b2lss"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -514,13 +586,16 @@ export device="htc_a5mgp_dug"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -534,13 +609,16 @@ export device="HM2014011"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
@@ -554,13 +632,16 @@ export device="WBW5506"
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
 lunch omni_$device-eng
-make -j64 recoveryimage
+mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
 mv recovery.img twrp-$twrpver-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
+rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
