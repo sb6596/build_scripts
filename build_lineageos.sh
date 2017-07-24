@@ -36,11 +36,10 @@ cd device/$brand/$device/patches
 . apply.sh
 
 # Main building script
+date=`date +%Y%m%d`
 source build/envsetup.sh
 make update-api
 brunch lineage_$device-userdebug > lineage_$device.log
-
-date=`date +%Y%m%d`
 
 # Uploading to MEGA
 cd out/target/product/$device
