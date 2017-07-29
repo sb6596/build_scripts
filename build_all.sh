@@ -27,7 +27,7 @@ export branch="android-5.1"
 
 # Acer Liquid Z500 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_acer_acer_Z500.git"
+export device_tree="https://github.com/liquidporting/android_device_acer_acer_Z500.git"
 export brand="acer"
 export device="acer_Z500"
 
@@ -50,7 +50,7 @@ cd ..
 
 # Lenovo A328 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lenovo_A328.git"
+export device_tree="https://github.com/liquidporting/android_device_lenovo_A328.git"
 export brand="lenovo"
 export device="A328"
 
@@ -73,7 +73,7 @@ cd ..
 
 # Acer Liquid E700 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_acer_E39.git"
+export device_tree="https://github.com/liquidporting/android_device_acer_E39.git"
 export brand="acer"
 export device="E39"
 
@@ -96,7 +96,7 @@ cd ..
 
 # Acer Liquid X1 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_acer_S53.git"
+export device_tree="https://github.com/liquidporting/android_device_acer_S53.git"
 export brand="acer"
 export device="S53"
 
@@ -119,7 +119,7 @@ cd ..
 
 # Acer Liquid Jade Plus specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_acer_S55.git"
+export device_tree="https://github.com/liquidporting/android_device_acer_S55.git"
 export brand="acer"
 export device="S55"
 
@@ -142,9 +142,9 @@ cd ..
 
 # Acer Liquid Z520 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_acer_Z520.git"
+export device_tree="https://github.com/liquidporting/android_device_acer_acer_Z520.git"
 export brand="acer"
-export device="Z520"
+export device="acer_Z520"
 
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
@@ -165,7 +165,7 @@ cd ..
 
 # Huawei Honor 3C Lite specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_huawei_holly.git"
+export device_tree="https://github.com/liquidporting/android_device_huawei_holly.git"
 export brand="huawei"
 export device="holly"
 
@@ -188,7 +188,7 @@ cd ..
 
 # Cherry Mobile Me Vibe specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_cherry_X170.git"
+export device_tree="https://github.com/liquidporting/android_device_cherry_X170.git"
 export brand="cherry"
 export device="X170"
 
@@ -211,7 +211,7 @@ cd ..
 
 # Lava Iris X8 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lava_irisX8.git"
+export device_tree="https://github.com/liquidporting/android_device_lava_irisX8.git"
 export brand="lava"
 export device="irisX8"
 
@@ -234,7 +234,7 @@ cd ..
 
 # Lenovo A536 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lenovo_A536.git"
+export device_tree="https://github.com/liquidporting/android_device_lenovo_A536.git"
 export brand="lenovo"
 export device="A536"
 
@@ -257,7 +257,7 @@ cd ..
 
 # Lenovo IdeaTab A7-50 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lenovo_A3500.git"
+export device_tree="https://github.com/liquidporting/android_device_lenovo_A3500.git"
 export brand="lenovo"
 export device="A3500"
 
@@ -280,7 +280,7 @@ cd ..
 
 # Lenovo S650 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lenovo_S650_ROW.git"
+export device_tree="https://github.com/liquidporting/android_device_lenovo_S650_ROW.git"
 export brand="lenovo"
 export device="S650_ROW"
 
@@ -303,7 +303,7 @@ cd ..
 
 # Micromax Canvas Selfie Lens Q345 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_micromax_Q345.git"
+export device_tree="https://github.com/liquidporting/android_device_micromax_Q345.git"
 export brand="micromax"
 export device="Q345"
 
@@ -326,7 +326,7 @@ cd ..
 
 # Oppo Neo 7 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_oppo_A33w.git"
+export device_tree="https://github.com/liquidporting/android_device_oppo_A33w.git"
 export brand="oppo"
 export device="A33w"
 
@@ -349,7 +349,7 @@ cd ..
 
 # Prestigio MultiPhone 5504 Duo specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_prestigio_PSP5504DUO.git"
+export device_tree="https://github.com/liquidporting/android_device_prestigio_PSP5504DUO.git"
 export brand="prestigio"
 export device="PSP5504DUO"
 
@@ -372,7 +372,7 @@ cd ..
 
 # QMobile X70 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_qmobile_J220.git"
+export device_tree="https://github.com/liquidporting/android_device_qmobile_J220.git"
 export brand="qmobile"
 export device="J220"
 
@@ -395,7 +395,7 @@ cd ..
 
 # Symphony Xplorer V80 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_symphony_V80.git"
+export device_tree="https://github.com/liquidporting/android_device_symphony_V80.git"
 export brand="symphony"
 export device="V80"
 
@@ -418,7 +418,7 @@ cd ..
 
 # XOLO Omega 5.5 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_xolo_omega_5_5.git"
+export device_tree="https://github.com/liquidporting/android_device_xolo_omega_5_5.git"
 export brand="xolo"
 export device="omega_5_5"
 
@@ -441,7 +441,7 @@ cd ..
 
 # Intex Aqua Power HD specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_intex_Aqua_Power_HD.git"
+export device_tree="https://github.com/liquidporting/android_device_intex_Aqua_Power_HD.git"
 export brand="intex"
 export device="Aqua_Power_HD"
 
@@ -464,7 +464,7 @@ cd ..
 
 # HTC Desire 620G dual sim specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_htc_htc_a31mg_dug.git"
+export device_tree="https://github.com/liquidporting/android_device_htc_htc_a31mg_dug.git"
 export brand="htc"
 export device="htc_a31mg_dug"
 
@@ -487,7 +487,7 @@ cd ..
 
 # Xiaomi Redmi Note 3G specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_xiaomi_lcsh92_wet_jb9.git"
+export device_tree="https://github.com/liquidporting/android_device_xiaomi_lcsh92_wet_jb9.git"
 export brand="xiaomi"
 export device="lcsh92_wet_jb9"
 
@@ -510,7 +510,7 @@ cd ..
 
 # Lenovo S860 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lenovo_S860.git"
+export device_tree="https://github.com/liquidporting/android_device_lenovo_S860.git"
 export brand="lenovo"
 export device="S860"
 
@@ -533,7 +533,7 @@ cd ..
 
 # Kingzone K1 Turbo specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_kingzone_K1_turbo.git"
+export device_tree="https://github.com/liquidporting/android_device_kingzone_K1_turbo.git"
 export brand="kingzone"
 export device="K1_turbo"
 
@@ -556,7 +556,7 @@ cd ..
 
 # LG G3 Stylus specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_lge_b2lss.git"
+export device_tree="https://github.com/liquidporting/android_device_lge_b2lss.git"
 export brand="lge"
 export device="b2lss"
 
@@ -579,7 +579,7 @@ cd ..
 
 # HTC Desire 816G dual sim specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_htc_htc_a5mgp_dug.git"
+export device_tree="https://github.com/liquidporting/android_device_htc_htc_a5mgp_dug.git"
 export brand="htc"
 export device="htc_a5mgp_dug"
 
@@ -602,7 +602,7 @@ cd ..
 
 # Xiaomi Redmi 1S TD specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_xiaomi_HM2014011.git"
+export device_tree="https://github.com/liquidporting/android_device_xiaomi_HM2014011.git"
 export brand="xiaomi"
 export device="HM2014011"
 
@@ -625,7 +625,7 @@ cd ..
 
 # Gionee M2 specific TWRP build configuration
 
-export device_tree="https://github.com/hejsekvojtech/android_device_gionee_WBW5506.git"
+export device_tree="https://github.com/liquidporting/android_device_gionee_WBW5506.git"
 export brand="gionee"
 export device="WBW5506"
 
