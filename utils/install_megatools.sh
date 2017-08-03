@@ -20,6 +20,5 @@ echo Username = your@email >> ~/.megarc
 echo Password = yourpassword >> ~/.megarc
 nano ~/.megarc
 cd ~
-clear
-clear scrollback
+clear && clear scrollback
 echo MEGA is now fully set-up on your Linux computer
