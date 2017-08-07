@@ -646,4 +646,27 @@ cd device
 rm -rf $brand
 cd ..
 
+# Micromax Canvas Hue TWRP build configuration
+
+export device_tree="https://github.com/liquidporting/android_device_micromax_AQ5000.git"
+export brand="micromax"
+export device="AQ5000"
+
+git clone $device_tree -b $branch device/$brand/$device
+. build/envsetup.sh
+lunch omni_$device-eng
+mka recoveryimage > twrp_$device.log
+cd out/target/product/$device
+mv recovery.img twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
+cd ../../../..
+make clean
+rm twrp_$device.log
+cd device
+rm -rf $brand
+cd ..
+
 echo "TeamWin Recovery $twrpver has been successfuly built for all LPAD supported devices!"
