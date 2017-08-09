@@ -24,7 +24,6 @@ export vendor_tree="https://github.com/liquidporting/android_vendor_acer_acer_Z5
 export brand="acer"
 export device="acer_Z500"
 export lineagever="13.0"
-export CM_BUILDTYPE="NIGHTLY"
 export WITH_SU=true
 
 # Clonning device & vendor tree
@@ -43,9 +42,9 @@ brunch lineage_$device-userdebug > lineage_$device.log
 
 # Uploading to MEGA
 cd out/target/product/$device
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-$CM_BUILDTYPE-$device.zip.md5sum
+megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip.md5sum
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS ../../../../lineage_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-$CM_BUILDTYPE-$device.zip
+megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip
 cd ../../../..
 
 # Cleaning the source
@@ -55,4 +54,4 @@ cd device
 rm -rf $brand
 cd ..
 
-echo "lineage-$lineagever-$date-$CM_BUILDTYPE-$device.zip has been built and uploaded successfuly!"
+echo "lineage-$lineagever-$date-UNOFFICIAL-$device.zip has been built and uploaded successfuly!"
