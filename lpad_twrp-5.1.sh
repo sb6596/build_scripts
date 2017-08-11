@@ -669,4 +669,4 @@ cd device
 rm -rf $brand
 cd ..
 
-echo "TeamWin Recovery $twrpver has been successfuly built for all LPAD supported devices!"
+echo "TeamWin Recovery $twrpver has been successfuly built for all LPAD supported devices $branch branch!"

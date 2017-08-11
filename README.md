@@ -6,9 +6,10 @@ for your device. These bash based scripts are easy to use and they just needs to
 of source you want to build from (LineageOS or TWRP)
 
 * Scripts in this repository
-  * build_all.sh - builds TWRP for all Liquid Porting And Development devices (only for LPAD admins)
-  * build_lineageos.sh - builds LineageOS for one particular device
-  * build_twrp.sh - builds TWRP for one particular device
+  * lpad_twrp-5.1.sh - builds TWRP for all Liquid Porting & Development devices using android-5.1 branch
+  * lpad_twrp-6.0.sh - builds TWRP for all Liquid Porting & Development devices using android-6.0 branch
+  * lineageos.sh - builds LineageOS for one particular device
+  * twrp.sh - builds TWRP for one particular device
   
 * Misc. scripts
   * install_megatools.sh - installs MEGA for uploading builds
