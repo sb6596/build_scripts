@@ -14,6 +14,8 @@ of source you want to build from (LineageOS or TWRP)
 * Misc. scripts
   * install_megatools.sh - installs MEGA for uploading builds
 
+## Cloning
+
 Now we'll clone them and `cd` to them by running these commands:
 
 ```sh
@@ -27,6 +29,8 @@ Install it by executing following commands from build_scripts folder:
 ```sh
 bash utils/install_megatools.sh
 ```
+
+## Configuring
 
 After installing required utilities you have to configure script you want to use by opening it with text editor and changing following:
 
@@ -43,6 +47,8 @@ Once your script is set-up, place it to the root of TWRP or LineageOS source. If
 For TWRP click [here](https://github.com/hejsekvojtech/android_bootable_recovery)
 
 For LineageOS click [here](https://github.com/LineageOS/android)
+
+## Starting scripts
 
 Once your choosen and configured script is placed into the root of required source, execute it by:
 
