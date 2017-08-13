@@ -669,7 +669,7 @@ cd device
 rm -rf $brand
 cd ..
 
-# Micromax Canvas Hue TWRP build configuration
+# Huawei Honor 3C TWRP build configuration
 
 export device_tree="https://github.com/liquidporting/android_device_huawei_H30-U10.git"
 export brand="huawei"
