@@ -1,6 +1,7 @@
 # Get started with scripts
 
-> These scripts were made to help with building various Android ROMs and Recoveries. I use these on my build server/personal machine so  > they are tailored specifically to me but you are free to take these and modify them for your own needs.
+> These scripts were made to help with building various Android ROMs and Recoveries. I use these on my build server/personal machine so
+> they are tailored specifically to me but you are free to take these and modify them for your own needs.
 > This repository contains some useful bash scripts for fully automated building of LineageOS based ROMs or TWRP recovery
 > for your device. These bash based scripts are easy to use and they just needs to be executed in terminal from the root folder
 > of source you want to build from (LineageOS or TWRP)
