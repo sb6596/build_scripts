@@ -22,8 +22,9 @@
 export device_tree="https://github.com/liquidporting/android_device_acer_acer_Z500.git"
 export brand="acer"
 export device="acer_Z500"
-export twrpver="3.1.1-0"
+export TW_DEVICE_VERSION=1
 export branch="android-5.1"
+export version=( grep "TW_MAIN_VERSION_STR" $PWD/bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-$TW_DEVICE_VERSION
 
 # Clonning device tree
 git clone $device_tree -b $branch device/$brand/$device
@@ -33,12 +34,12 @@ git clone $device_tree -b $branch device/$brand/$device
 lunch omni_$device-eng
 make -j64 recoveryimage > twrp_$device.log
 cd out/target/product/$device
-mv recovery.img twrp-$twrpver-$device.img
+mv recovery.img twrp-$version-$device.img
 
 # Uploading to MEGA
-megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$version-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$version-$device.img
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 
@@ -48,4 +49,5 @@ rm twrp_$device.log
 cd device
 rm -rf $brand
 cd ..
-echo "twrp-$twrpver-$device.img has been built and uploaded successfuly!"
+unset TW_DEVICE_VERSION
+echo "twrp-$version-$device.img has been built and uploaded successfuly!"
