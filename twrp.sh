@@ -24,7 +24,9 @@ export brand="acer"
 export device="acer_Z500"
 export TW_DEVICE_VERSION=1
 export branch="android-5.1"
-export version=( grep "TW_MAIN_VERSION_STR" $PWD/bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-$TW_DEVICE_VERSION
+
+# Don't touch this
+version=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
 # Clonning device tree
 git clone $device_tree -b $branch device/$brand/$device
