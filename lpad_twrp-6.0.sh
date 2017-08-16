@@ -22,11 +22,13 @@
 # If you want to add your device to our build rooster, create pull request
 # or contact me at https://www.facebook.com/kh4os
 
-export twrpver="3.1.1-0"
+export TW_DEVICE_VERSION=1
 export branch="android-6.0"
 
-# Xiaomi Redmi XA specific TWRP build configuration
+# Don't touch this
+version=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
+# Xiaomi Redmi XA specific TWRP build configuration
 export device_tree="https://github.com/liquidporting/android_device_xiaomi_rolex.git"
 export brand="xiaomi"
 export device="rolex"
@@ -36,10 +38,10 @@ git clone $device_tree -b $branch device/$brand/$device
 lunch omni_$device-eng
 mka recoveryimage > twrp_$device.log
 cd out/target/product/$device
-mv recovery.img twrp-$twrpver-$device.img
-megarm /Root/LPAD/Devices/$device/Recovery/twrp-$twrpver-$device.img
+mv recovery.img twrp-$version-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$version-$device.img
 megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$twrpver-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$version-$device.img
 megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
 cd ../../../..
 make clean
@@ -48,4 +50,4 @@ cd device
 rm -rf $brand
 cd ..
 
-echo "TeamWin Recovery $twrpver has been successfuly built for all LPAD supported devices $branch branch!"
+echo "TeamWin Recovery $version has been successfuly built for all LPAD supported devices using $branch branch!"

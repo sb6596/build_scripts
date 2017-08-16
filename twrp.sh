@@ -52,4 +52,4 @@ cd device
 rm -rf $brand
 cd ..
 unset TW_DEVICE_VERSION
-echo "twrp-$version-$device.img has been built and uploaded successfuly!"
+echo "TeamWin Recovery $version has been successfuly built for device $device using $branch branch!"
