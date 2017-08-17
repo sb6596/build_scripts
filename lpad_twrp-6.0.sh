@@ -50,4 +50,5 @@ cd device
 rm -rf $brand
 cd ..
 
+unset TW_DEVICE_VERSION
 echo "TeamWin Recovery $version has been successfuly built for all LPAD supported devices using $branch branch!"
