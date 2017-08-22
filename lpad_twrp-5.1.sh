@@ -644,5 +644,27 @@ cd device
 rm -rf $brand
 cd ..
 
+# Huawei Honor 3C TWRP build configuration
+export device_tree="https://github.com/liquidporting/android_device_huawei_H30_U10.git"
+export brand="huawei"
+export device="H30_U10"
+
+git clone $device_tree -b $branch device/$brand/$device
+. build/envsetup.sh
+lunch omni_$device-eng
+mka recoveryimage > twrp_$device.log
+cd out/target/product/$device
+mv recovery.img twrp-$version-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$version-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$version-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
+cd ../../../..
+make clean
+rm twrp_$device.log
+cd device
+rm -rf $brand
+cd ..
+
 unset TW_DEVICE_VERSION
 echo "TeamWin Recovery $version has been successfuly built for all LPAD supported devices using $branch branch!"
