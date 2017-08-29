@@ -28,10 +28,32 @@ export branch="android-6.0"
 # Don't touch this
 version=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
-# Xiaomi Redmi XA specific TWRP build configuration
+# Xiaomi Redmi 4A specific TWRP build configuration
 export device_tree="https://github.com/liquidporting/android_device_xiaomi_rolex.git"
 export brand="xiaomi"
 export device="rolex"
+
+git clone $device_tree -b $branch device/$brand/$device
+. build/envsetup.sh
+lunch omni_$device-eng
+mka recoveryimage > twrp_$device.log
+cd out/target/product/$device
+mv recovery.img twrp-$version-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp-$version-$device.img
+megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$version-$device.img
+megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
+cd ../../../..
+make clean
+rm twrp_$device.log
+cd device
+rm -rf $brand
+cd ..
+
+# Xiaomi Redmi 4 (China) specific TWRP build configuration
+export device_tree="https://github.com/liquidporting/android_device_xiaomi_prada.git"
+export brand="xiaomi"
+export device="prada"
 
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
