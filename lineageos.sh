@@ -41,7 +41,7 @@ make update-api
 brunch lineage_$device-userdebug > lineage_$device.log
 
 # Uploading to MEGA
-cd out/target/product/$device
+cd $OUT
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip.md5sum
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS ../../../../lineage_$device.log
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip
