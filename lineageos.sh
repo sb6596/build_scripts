@@ -52,5 +52,8 @@ rm lineage_$device.log
 cd device
 rm -rf $brand
 cd ..
+cd vendor
+rm -rf $brand
+cd ..
 
 echo "lineage-$lineagever-$date-UNOFFICIAL-$device.zip has been built and uploaded successfuly!"
