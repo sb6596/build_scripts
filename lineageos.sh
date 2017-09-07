@@ -24,7 +24,6 @@ export vendor_tree="https://github.com/liquidporting/android_vendor_acer_acer_Z5
 export brand="acer"
 export device="acer_Z500"
 export lineagever="13.0"
-export WITH_SU=true
 
 # Clonning device & vendor tree
 git clone $device_tree -b cm-$lineagever device/$brand/$device
