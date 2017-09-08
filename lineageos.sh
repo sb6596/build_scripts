@@ -33,6 +33,9 @@ git clone $vendor_tree -b cm-$lineagever vendor/$brand/$device
 cd device/$brand/$device/patches
 . apply.sh
 
+# Include SuperSU binary
+WITH_SU := true
+
 # Main building script
 date=`date +%Y%m%d`
 source build/envsetup.sh
