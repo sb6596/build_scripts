@@ -23,18 +23,18 @@ export device_tree="https://github.com/liquidporting/android_device_acer_acer_Z5
 export vendor_tree="https://github.com/liquidporting/android_vendor_acer_acer_Z500.git"
 export brand="acer"
 export device="acer_Z500"
-export lineagever="13.0"
+export branch="13.0"
 
 # Clonning device & vendor tree
-git clone $device_tree -b cm-$lineagever device/$brand/$device
-git clone $vendor_tree -b cm-$lineagever vendor/$brand/$device
+git clone $device_tree -b cm-$branch device/$brand/$device
+git clone $vendor_tree -b cm-$branch vendor/$brand/$device
 
 # Patching source (some devices requires it)
 cd device/$brand/$device/patches
 . apply.sh
 
 # Include SuperSU binary
-WITH_SU := true
+export WITH_SU := true
 
 # Main building script
 date=`date +%Y%m%d`
@@ -44,9 +44,9 @@ brunch lineage_$device-userdebug > lineage_$device.log
 
 # Uploading to MEGA
 cd $OUT
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip.md5sum
+megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip.md5sum
 megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS ../../../../lineage_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$lineagever-$date-UNOFFICIAL-$device.zip
+megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip
 cd ../../../..
 
 # Cleaning the source
@@ -59,4 +59,4 @@ cd vendor
 rm -rf $brand
 cd ..
 
-echo "lineage-$lineagever-$date-UNOFFICIAL-$device.zip has been built and uploaded successfuly!"
+echo "lineage-$lineagever-$date-UNOFFICIAL-$device.zip from $branch branch has been built and uploaded successfuly!"
