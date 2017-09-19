@@ -19,7 +19,7 @@
 # Build script for fully automated Team Win Recovery Project (TWRP) building
 # for all Liquid Porting & Development supported devices.
 
-# If you want to add your device to our build rooster, create pull request
+# If you want to add your device to our build roster, create pull request
 # or contact me at https://www.facebook.com/kh4os
 
 export TW_DEVICE_VERSION=1
@@ -626,28 +626,6 @@ cd ..
 export device_tree="https://github.com/liquidporting/android_device_micromax_AQ5000.git"
 export brand="micromax"
 export device="AQ5000"
-
-git clone $device_tree -b $branch device/$brand/$device
-. build/envsetup.sh
-lunch omni_$device-eng
-mka recoveryimage > twrp_$device.log
-cd out/target/product/$device
-mv recovery.img twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/$version/twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/$version/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/TWRP/$version twrp-$version-$device.img
-megaput --no-progress --path /Root/LPAD/TWRP/$version ../../../../twrp_$device.log
-cd ../../../..
-make clean
-rm twrp_$device.log
-cd device
-rm -rf $brand
-cd ..
-
-# Huawei Honor 3C TWRP build configuration
-export device_tree="https://github.com/liquidporting/android_device_huawei_H30_U10.git"
-export brand="huawei"
-export device="H30_U10"
 
 git clone $device_tree -b $branch device/$brand/$device
 . build/envsetup.sh
