@@ -19,7 +19,7 @@
 # Build script for fully automated Team Win Recovery Project (TWRP) building
 # for all Liquid Porting & Development supported devices.
 
-# If you want to add your device to our build rooster, create pull request
+# If you want to add your device to our build roster, create pull request
 # or contact me at https://www.facebook.com/kh4os
 
 export TW_DEVICE_VERSION=1
