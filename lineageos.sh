@@ -33,9 +33,6 @@ git clone $vendor_tree -b cm-$branch vendor/$brand/$device
 cd device/$brand/$device/patches
 . apply.sh
 
-# Include SuperSU binary
-export WITH_SU := true
-
 # Main building script
 date=`date +%Y%m%d`
 source build/envsetup.sh
@@ -43,9 +40,9 @@ brunch lineage_$device-userdebug > lineage_$device.log
 
 # Uploading to MEGA
 cd out/target/product/$device
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip.md5sum
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS ../../../../lineage_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/ROMs/Custom/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip
+megaput --no-progress --path /Root/LPAD/$device/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip.md5sum
+megaput --no-progress --path /Root/LPAD/$device/LineageOS ../../../../lineage_$device.log
+megaput --no-progress --path /Root/LPAD/$device/LineageOS lineage-$branch-$date-UNOFFICIAL-$device.zip
 cd ../../../..
 
 # Cleaning the source

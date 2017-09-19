@@ -39,10 +39,10 @@ cd out/target/product/$device
 mv recovery.img twrp-$version-$device.img
 
 # Uploading to MEGA
-megarm /Root/LPAD/Devices/$device/Recovery/twrp-$version-$device.img
-megarm /Root/LPAD/Devices/$device/Recovery/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery twrp-$version-$device.img
-megaput --no-progress --path /Root/LPAD/Devices/$device/Recovery ../../../../twrp_$device.log
+megarm /Root/LPAD/TWRP/$version/twrp-$version-$device.img
+megarm /Root/LPAD/TWRP/$version/twrp_$device.log
+megaput --no-progress --path /Root/LPAD/TWRP/$version twrp-$version-$device.img
+megaput --no-progress --path /Root/LPAD/TWRP/$version ../../../../twrp_$device.log
 cd ../../../..
 
 # Cleaning the source
