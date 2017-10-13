@@ -16,40 +16,61 @@
 # limitations under the License.
 #
 
-# Build script for fully automated Team Win Recovery Project (TWRP) building.
-
-# Before building, please edit these script settings to suit your device
-export device_tree="https://github.com/liquidporting/android_device_acer_acer_Z500.git"
-export brand="acer"
-export device="acer_Z500"
-export TW_DEVICE_VERSION=1
-export branch="android-5.1"
+# Variables
+export TW_DEVICE_VERSION="0"
+export BRANCH="android-5.1"
+export DEVICE="acer_Z500"
+export BRAND="acer"
 
 # Don't touch this
-version=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
+VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
-# Clonning device tree
-git clone $device_tree -b $branch device/$brand/$device
+# Clonning the device tree
+git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
 
-# Main building script
+# Main script
 . build/envsetup.sh
-lunch omni_$device-eng
-make -j64 recoveryimage > twrp_$device.log
-cd out/target/product/$device
-mv recovery.img twrp-$version-$device.img
+lunch omni_${DEVICE}-eng
+make -j64 recoveryimage > twrp_${DEVICE}.log
+cd out/target/product/${DEVICE}
+if [ -f "recovery.img" ]
+then
+  mv recovery.img twrp-${VERSION}-${DEVICE}.img
+else
+  echo ""
+  echo "*******************************************************************************"
+  echo "Something went wrong during the build process, try checking your device tree."
+  echo "After that, run the script again and see if you messed up something new or not."
+  echo "*******************************************************************************"
+  echo ""
+fi
 
-# Uploading to MEGA
-megarm /Root/LPAD/TWRP/twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/TWRP twrp-$version-$device.img
-megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_$device.log
-cd ../../../..
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  echo "Uploading the twrp-${VERSION}-${DEVICE}.img file to MEGA..."
+  megarm /Root/LPAD/TWRP/twrp-${VERSION}-${DEVICE}.img
+  megarm /Root/LPAD/TWRP/twrp_${DEVICE}.log
+  megaput --no-progress --path /Root/LPAD/TWRP twrp-${VERSION}-${DEVICE}.img
+  megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_${DEVICE}.log
+  echo "Done!"
+fi
 
 # Cleaning the source
-make clean
-rm twrp_$device.log
-cd device
-rm -rf $brand
-cd ..
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  cd ../../../..
+  rm twrp_${DEVICE}.log
+  make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+  echo ""
+  echo "*******************************************************************************************************"
+  echo "TeamWin Recovery ${VERSION} has been successfuly built for device ${DEVICE} using the ${BRANCH} branch!"
+  echo "*******************************************************************************************************"
+  echo ""
+else
+  rm twrp_${DEVICE}.log
+  make clean
+fi
 unset TW_DEVICE_VERSION
-echo "TeamWin Recovery $version has been successfuly built for device $device using $branch branch!"
