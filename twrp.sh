@@ -45,6 +45,7 @@ else
   echo ""
 fi
 
+# Uploading to MEGA
 if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
 then
   echo "Uploading the twrp-${VERSION}-${DEVICE}.img file to MEGA..."
