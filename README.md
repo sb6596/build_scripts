@@ -9,7 +9,7 @@
 * Scripts in this repository
   * lpad_twrp-5.1.sh - builds TWRP for all Liquid Porting & Development devices using android-5.1 branch
   * lpad_twrp-6.0.sh - builds TWRP for all Liquid Porting & Development devices using android-6.0 branch
-  * lineageos.sh - builds LineageOS for one particular device
+  * lineage.sh - builds LineageOS for one particular device
   * twrp.sh - builds TWRP for one particular device
   
 * Misc. scripts
@@ -33,19 +33,11 @@ bash utils/install_megatools.sh
 
 ## Configuring
 
-After installing required utilities you have to configure script you want to use by opening it with text editor and changing following:
-
-`export device_tree=`
-`export vendor_tree=`
-`export brand=`
-`export device=`
-`export branch=`
-`export twrpver=`
-`export lineagever=`
+After installing required utilities you have to configure script you want to use by opening it with text editor and changing values in the "Variables" section
 
 Once your script is set-up, place it to the root of TWRP or LineageOS source. If you don't have it synced yet, you can use these links:
 
-For TWRP click [here](https://github.com/hejsekvojtech/android_bootable_recovery)
+For TWRP click [here](https://github.com/omnirom/android_bootable_recovery)
 
 For LineageOS click [here](https://github.com/LineageOS/android)
 

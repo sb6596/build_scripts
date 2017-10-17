@@ -16,61 +16,118 @@
 # limitations under the License.
 #
 
-# Build script for fully automated Team Win Recovery Project (TWRP) building
-# for all Liquid Porting & Development supported devices.
-
-# If you want to add your device to our build roster, create pull request
-# or contact me at https://www.facebook.com/kh4os
-
-export TW_DEVICE_VERSION=1
+# Variables
+export TW_DEVICE_VERSION="0"
 export branch="android-6.0"
 
 # Don't touch this
-version=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
+VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
 # Xiaomi Redmi 4A specific TWRP build configuration
-export device_tree="https://github.com/liquidporting/android_device_xiaomi_rolex.git"
-export brand="xiaomi"
-export device="rolex"
+export BRAND="xiaomi"
+export DEVICE="rolex"
 
-git clone $device_tree -b $branch device/$brand/$device
+git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
 . build/envsetup.sh
-lunch omni_$device-eng
-mka recoveryimage > twrp_$device.log
-cd out/target/product/$device
-mv recovery.img twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/TWRP twrp-$version-$device.img
-megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_$device.log
-cd ../../../..
-make clean
-rm twrp_$device.log
-cd device
-rm -rf $brand
-cd ..
+lunch omni_${DEVICE}-eng
+mka recoveryimage > twrp_${DEVICE}.log
+cd out/target/product/${DEVICE}
+if [ -f "recovery.img" ]
+then
+  mv recovery.img twrp-${VERSION}-${DEVICE}.img
+else
+  echo ""
+  echo "*******************************************************************************"
+  echo "Something went wrong during the build process, try checking your device tree."
+  echo "After that, run the script again and see if you messed up something new or not."
+  echo "*******************************************************************************"
+  echo ""
+fi
+
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  megarm /Root/LPAD/TWRP/twrp-${VERSION}-${DEVICE}.img
+  megarm /Root/LPAD/TWRP/twrp_${DEVICE}.log
+  megaput --no-progress --path /Root/LPAD/TWRP twrp-${VERSION}-${DEVICE}.img
+  megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_${DEVICE}.log
+fi
+
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  cd ../../../..
+  rm twrp_${DEVICE}.log
+  make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+else
+  rm twrp_${DEVICE}.log
+  make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+  echo ""
+  echo "**************************************************************"
+  echo "The build process of TWRP Recovery failed for device ${DEVICE}"
+  echo "**************************************************************"
+  echo ""
+  exit
+fi
 
 # Xiaomi Redmi 4 (China) specific TWRP build configuration
-export device_tree="https://github.com/liquidporting/android_device_xiaomi_prada.git"
-export brand="xiaomi"
-export device="prada"
+export BRAND="xiaomi"
+export DEVICE="prada"
 
-git clone $device_tree -b $branch device/$brand/$device
+git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
 . build/envsetup.sh
-lunch omni_$device-eng
-mka recoveryimage > twrp_$device.log
-cd out/target/product/$device
-mv recovery.img twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/twrp-$version-$device.img
-megarm /Root/LPAD/TWRP/twrp_$device.log
-megaput --no-progress --path /Root/LPAD/TWRP twrp-$version-$device.img
-megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_$device.log
-cd ../../../..
-make clean
-rm twrp_$device.log
-cd device
-rm -rf $brand
-cd ..
+lunch omni_${DEVICE}-eng
+mka recoveryimage > twrp_${DEVICE}.log
+cd out/target/product/${DEVICE}
+if [ -f "recovery.img" ]
+then
+  mv recovery.img twrp-${VERSION}-${DEVICE}.img
+else
+  echo ""
+  echo "*******************************************************************************"
+  echo "Something went wrong during the build process, try checking your device tree."
+  echo "After that, run the script again and see if you messed up something new or not."
+  echo "*******************************************************************************"
+  echo ""
+fi
 
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  megarm /Root/LPAD/TWRP/twrp-${VERSION}-${DEVICE}.img
+  megarm /Root/LPAD/TWRP/twrp_${DEVICE}.log
+  megaput --no-progress --path /Root/LPAD/TWRP twrp-${VERSION}-${DEVICE}.img
+  megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_${DEVICE}.log
+fi
+
+if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
+then
+  cd ../../../..
+  rm twrp_${DEVICE}.log
+  make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+else
+  rm twrp_${DEVICE}.log
+  make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+  echo ""
+  echo "**************************************************************"
+  echo "The build process of TWRP Recovery failed for device ${DEVICE}"
+  echo "**************************************************************"
+  echo ""
+  exit
+fi
+
+echo ""
+echo "*******************************************************************************************************"
+echo "TeamWin Recovery ${VERSION} has been successfuly built for all LPAD devices using the ${BRANCH} branch!"
+echo "*******************************************************************************************************"
+echo ""
 unset TW_DEVICE_VERSION
-echo "TeamWin Recovery $version has been successfuly built for all LPAD supported devices using $branch branch!"
