@@ -46,5 +46,9 @@ For LineageOS click [here](https://github.com/LineageOS/android)
 Once your choosen and configured script is placed into the root of required source, execute it by:
 
 ```sh
-bash <script name>.sh
+. <script name>.sh <option>
 ```
+
+## Options
+
+* patch (patches the source if device requires it)
