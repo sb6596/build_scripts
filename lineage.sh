@@ -16,6 +16,9 @@
 # limitations under the License.
 #
 
+# Option
+PATCH="$1"
+
 # Variables
 export BRANCH="cm-14.1"
 export DEVICE="acer_Z500"
@@ -30,8 +33,11 @@ git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git
 git clone https://github.com/liquidporting/android_vendor_${BRAND}_${DEVICE}.git -b ${BRANCH} vendor/${BRAND}/${DEVICE}
 
 # Patching the source (some devices requires it)
-cd device/${BRAND}/${DEVICE}/patches
-. apply.sh
+if [ "$PATCH" == "patch" ]
+then
+  cd device/${BRAND}/${DEVICE}/patches
+  . apply.sh
+fi
 
 # Main script
 source build/envsetup.sh
