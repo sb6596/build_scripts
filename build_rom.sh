@@ -16,17 +16,18 @@
 # limitations under the License.
 #
 
-# Option
+# Options
 PATCH="$1"
+LOG="$2"
+CCACHE="$3"
+
+OUTPUT_ZIP="*UNOFFICIAL*.zip"
+OUTPUT_MD5="*UNOFFICIAL*.md5sum"
 
 # Variables
 export BRANCH="cm-14.1"
 export DEVICE="acer_Z500"
 export BRAND="acer"
-
-# Don't touch this
-export OUTPUT_ZIP="*UNOFFICIAL*.zip"
-export OUTPUT_MD5="*UNOFFICIAL*.md5sum"
 
 # Clonning the device & vendor blobs
 git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
@@ -39,15 +40,35 @@ then
   . apply.sh
 fi
 
-# Main script
-source build/envsetup.sh
+# Setting up the environment
 if [ "$BRANCH" = "cm-13.0" ]
 then
+  source build/envsetup.sh
   make update-api
   make clean
   source build/envsetup.sh
+else
+  source build/envsetup.sh
 fi
-brunch lineage_${DEVICE}-userdebug > lineage_${DEVICE}.log
+
+# Setting up the CCache
+if [ "$CCACHE" = "ccache" ]
+then
+  export USE_CCACHE=1
+  ${PWD}/prebuilts/misc/linux-x86/ccache/ccache -M 50G
+fi
+
+# Setting the device
+breakfast ${DEVICE}-userdebug
+
+# Building the ROM
+if [ "$LOG" == "log" ]
+then
+  mka bacon 2>&1 | tee lineage_${DEVICE}.log
+else
+  mka bacon
+fi
+
 cd out/target/product/${DEVICE}
 
 # Uploading to MEGA
@@ -85,3 +106,6 @@ else
   rm lineage_${DEVICE}.log
   make clean
 fi
+
+# Kill Java
+pkill java

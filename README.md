@@ -2,15 +2,15 @@
 
 > These scripts were made to help with building various Android ROMs and Recoveries. I use these on my build server/personal machine so
 > they are tailored specifically to me but you are free to take these and modify them for your own needs.
-> This repository contains some useful bash scripts for fully automated building of LineageOS based ROMs or TWRP recovery
+> This repository contains some useful bash scripts for fully automated building ROMs or TWRP recovery
 > for your device. These bash based scripts are easy to use and they just needs to be executed in terminal from the root folder
-> of source you want to build from (LineageOS or TWRP)
+> of source you want to build from (a ROM or TWRP)
 
 * Scripts in this repository
   * lpad_twrp-5.1.sh - builds TWRP for all Liquid Porting & Development devices using android-5.1 branch
   * lpad_twrp-6.0.sh - builds TWRP for all Liquid Porting & Development devices using android-6.0 branch
-  * lineage.sh - builds LineageOS for one particular device
-  * twrp.sh - builds TWRP for one particular device
+  * build_rom.sh - builds a ROM for one particular device
+  * build_twrp.sh - builds TWRP for one particular device
   
 * Misc. scripts
   * install_megatools.sh - installs MEGA for uploading builds
@@ -35,20 +35,22 @@ bash utils/install_megatools.sh
 
 After installing required utilities you have to configure script you want to use by opening it with text editor and changing values in the "Variables" section
 
-Once your script is set-up, place it to the root of TWRP or LineageOS source. If you don't have it synced yet, you can use these links:
-
-For TWRP click [here](https://github.com/omnirom/android_bootable_recovery)
-
-For LineageOS click [here](https://github.com/LineageOS/android)
+Once your script is set-up, place it to the root of TWRP or a ROM source.
 
 ## Starting scripts
 
 Once your choosen and configured script is placed into the root of required source, execute it by:
 
 ```sh
-. <script name>.sh <option>
+bash <script name>.sh <option>
 ```
+
+### Examples
+
+bash build_rom.sh patch log ccache
 
 ## Options
 
 * patch (patches the source if device requires it)
+* log (saves a log file of the current build process)
+* ccache (enables CCache to speed up building)
