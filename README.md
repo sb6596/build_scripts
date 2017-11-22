@@ -25,7 +25,7 @@ cd build_scripts
 ```
 
 Before using these build scripts you have to install utilities for uploading builds or just disable lines that starts with `megaput` or `megarm` if you don't want to use uploading to MEGA. The following script is made for MEGA installation.
-Install it by executing following commands from build_scripts folder:
+Install it by executing following commands from `build_scripts` folder:
 
 ```sh
 bash utils/install_megatools.sh
@@ -47,10 +47,12 @@ bash <script name>.sh <option>
 
 ### Examples
 
+```sh
 bash build_rom.sh patch log ccache
+```
 
 ## Options
 
-* patch (patches the source if device requires it)
-* log (saves a log file of the current build process)
-* ccache (enables CCache to speed up building)
+* `patch` (patches the source if device requires it) | `nopatch` (does the opposite)
+* `log` (saves a log file of the current build process) | `nolog` (does the opposite)
+* `ccache` (enables CCache to speed up building) | `noccache` (does the opposite)
