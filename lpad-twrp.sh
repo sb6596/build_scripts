@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #
 # Copyright (C) 2017 Liquid Porting & Development
@@ -16,22 +16,14 @@
 # limitations under the License.
 #
 
-# Variables
-export TW_DEVICE_VERSION="0"
-export BRANCH="android-5.1"
-export DEVICE="acer_Z500"
-export BRAND="acer"
-
 # Don't touch this
 VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 
-# Clonning the device tree
+# Build script
 git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
-
-# Main script
 . build/envsetup.sh
 lunch omni_${DEVICE}-eng
-make -j64 recoveryimage > twrp_${DEVICE}.log
+mka recoveryimage > twrp_${DEVICE}.log
 cd out/target/product/${DEVICE}
 if [ -f "recovery.img" ]
 then
@@ -45,18 +37,14 @@ else
   echo ""
 fi
 
-# Uploading to MEGA
 if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
 then
-  echo "Uploading the twrp-${VERSION}-${DEVICE}.img file to MEGA..."
   megarm /Root/LPAD/TWRP/twrp-${VERSION}-${DEVICE}.img
   megarm /Root/LPAD/TWRP/twrp_${DEVICE}.log
   megaput --no-progress --path /Root/LPAD/TWRP twrp-${VERSION}-${DEVICE}.img
   megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_${DEVICE}.log
-  echo "Done!"
 fi
 
-# Cleaning the source
 if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
 then
   cd ../../../..
@@ -65,13 +53,17 @@ then
   cd device
   rm -rf ${BRAND}
   cd ..
-  echo ""
-  echo "*******************************************************************************************************"
-  echo "TeamWin Recovery ${VERSION} has been successfuly built for device ${DEVICE} using the ${BRANCH} branch!"
-  echo "*******************************************************************************************************"
-  echo ""
 else
   rm twrp_${DEVICE}.log
   make clean
+  cd device
+  rm -rf ${BRAND}
+  cd ..
+  echo ""
+  echo "**************************************************************"
+  echo "The build process of TWRP Recovery failed for device ${DEVICE}"
+  echo "**************************************************************"
+  echo ""
 fi
-unset TW_DEVICE_VERSION
+
+exit 1

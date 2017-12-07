@@ -7,15 +7,15 @@
 > of source you want to build from (a ROM or TWRP)
 
 * Scripts in this repository
-  * lpad_twrp-5.1.sh - builds TWRP for all Liquid Porting & Development devices using android-5.1 branch
-  * lpad_twrp-6.0.sh - builds TWRP for all Liquid Porting & Development devices using android-6.0 branch
-  * build_rom.sh - builds a ROM for one particular device
-  * build_twrp.sh - builds TWRP for one particular device
+  * lpad-twrp.sh - builds TWRP for all Liquid Porting & Development devices using android-5.1 branch
+  * build-rom.sh - builds a ROM for one particular device
+  * build-twrp.sh | lpad-twrp.sh - builds TWRP for one particular device
+  * lpad-devices.sh - set of device configurations for building TWRP for all LPAD devices
   
 * Misc. scripts
-  * install_megatools.sh - installs MEGA for uploading builds
+  * megatools-installer.sh - installs MEGA for uploading builds
 
-## Cloning
+## Preparing scripts
 
 Now we'll clone them and `cd` to them by running these commands:
 
@@ -23,19 +23,7 @@ Now we'll clone them and `cd` to them by running these commands:
 git clone https://github.com/hejsekvojtech/build_scripts.git
 cd build_scripts
 ```
-
-Before using these build scripts you have to install utilities for uploading builds or just disable lines that starts with `megaput` or `megarm` if you don't want to use uploading to MEGA. The following script is made for MEGA installation.
-Install it by executing following commands from `build_scripts` folder:
-
-```sh
-bash utils/install_megatools.sh
-```
-
-## Configuring
-
-After installing required utilities you have to configure script you want to use by opening it with text editor and changing values in the "Variables" section
-
-Once your script is set-up, place it to the root of TWRP or a ROM source.
+And then just copy any script you want to the root of a ROM or TWRP source you'll be building from.
 
 ## Starting scripts
 
@@ -48,11 +36,16 @@ bash <script name>.sh <option>
 ### Examples
 
 ```sh
-bash build_rom.sh patch log ccache
+bash build-rom.sh <device name> --log --ccache --clean
+```
+
+```sh
+bash build-twrp.sh <device name> --log --clean
 ```
 
 ## Options
 
-* `patch` (patches the source if device requires it) | `nopatch` (does the opposite)
-* `log` (saves a log file of the current build process) | `nolog` (does the opposite)
-* `ccache` (enables CCache to speed up building) | `noccache` (does the opposite)
+* `--log` (saves a log file of the current build process) | `--nolog` (does the opposite)
+* `--ccache` (enables CCache to speed up building) | `--noccache` (does the opposite)
+* `<device name>` (tells the compiler which device we want to build for)
+* `--clean` (performs a clean build) | `--noclean` (does the opposite)
