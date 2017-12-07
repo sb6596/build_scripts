@@ -16,6 +16,7 @@
 # limitations under the License.
 #
 
+# Don't touch this
 export VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
 export OUT_LOG="twrp-${VERSION}-${DEVICE}.log"
 export OUT_PATH="out/target/product/${DEVICE}"
