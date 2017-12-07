@@ -16,54 +16,55 @@
 # limitations under the License.
 #
 
-# Don't touch this
-VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
+export VERSION=$( grep "TW_MAIN_VERSION_STR" bootable/recovery/variables.h -m 1 | cut -d \" -f2 )-${TW_DEVICE_VERSION}
+export OUT_LOG="twrp-${VERSION}-${DEVICE}.log"
+export OUT_PATH="out/target/product/${DEVICE}"
+export OUT_RECOVERY_IMAGE="twrp-${VERSION}-${DEVICE}.img"
 
-# Build script
+# Clonning the tree
 git clone https://github.com/liquidporting/android_device_${BRAND}_${DEVICE}.git -b ${BRANCH} device/${BRAND}/${DEVICE}
-. build/envsetup.sh
+
+# Setting the build environment
+source build/envsetup.sh
+
+# Setting the device
 lunch omni_${DEVICE}-eng
-mka recoveryimage > twrp_${DEVICE}.log
-cd out/target/product/${DEVICE}
+
+# Building the TWRP
+mka recoveryimage | tee -a ${OUT_LOG}
+
+# Checking if the build was successful
+cd ${OUT_PATH}
 if [ -f "recovery.img" ]
 then
-  mv recovery.img twrp-${VERSION}-${DEVICE}.img
-else
-  echo ""
-  echo "*******************************************************************************"
-  echo "Something went wrong during the build process, try checking your device tree."
-  echo "After that, run the script again and see if you messed up something new or not."
-  echo "*******************************************************************************"
-  echo ""
-fi
-
-if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
-then
-  megarm /Root/LPAD/TWRP/twrp-${VERSION}-${DEVICE}.img
-  megarm /Root/LPAD/TWRP/twrp_${DEVICE}.log
-  megaput --no-progress --path /Root/LPAD/TWRP twrp-${VERSION}-${DEVICE}.img
-  megaput --no-progress --path /Root/LPAD/TWRP ../../../../twrp_${DEVICE}.log
-fi
-
-if [ -f "twrp-${VERSION}-${DEVICE}.img" ]
-then
+  mv recovery.img ${OUT_RECOVERY_IMAGE}
   cd ../../../..
-  rm twrp_${DEVICE}.log
+  if [ -f "ftp-afh.sh" ]
+  then
+    bash ftp-afh.sh
+  else
+    megarm /Root/LPAD/TWRP/${OUT_RECOVERY_IMAGE}
+    megarm /Root/LPAD/TWRP/${OUT_LOG}
+    megaput --no-progress --path /Root/LPAD/TWRP ${OUT_PATH}/${OUT_RECOVERY_IMAGE}
+    megaput --no-progress --path /Root/LPAD/TWRP ${OUT_LOG}
+  fi
+  rm ${OUT_LOG}
   make clean
   cd device
   rm -rf ${BRAND}
   cd ..
 else
-  rm twrp_${DEVICE}.log
+  rm ${OUT_LOG}
   make clean
   cd device
   rm -rf ${BRAND}
   cd ..
   echo ""
-  echo "**************************************************************"
-  echo "The build process of TWRP Recovery failed for device ${DEVICE}"
-  echo "**************************************************************"
+  echo "********************************************************************************"
+  echo " Something went wrong during the build process, try checking your device tree."
+  echo " After that, run the script again and see if you messed up something new or not."
+  echo "********************************************************************************"
   echo ""
 fi
 
-exit 1
+unset TW_DEVICE_VERSION && unset DEVICE && unset VERSION && unset OUT_PATH && unset OUT_LOG && unset OUT_RECOVERY_IMAGE && unset LOG
