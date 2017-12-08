@@ -19,6 +19,16 @@
 # Variables
 export TW_DEVICE_VERSION="0"
 export BRANCH="android-5.1"
+export LPAD_TWRP_LOG="lpad-twrp-$(date +%Y%m%d).log"
+
+# Log generator
+echo "*****************************************************" >> ${LPAD_TWRP_LOG}
+echo "*                                                   *" >> ${LPAD_TWRP_LOG}
+echo "* Build started on: $(date +"%d/%m/%Y %H:%M:%S")             *" >> ${LPAD_TWRP_LOG}
+echo "* Build results for each device                     *" >> ${LPAD_TWRP_LOG}
+echo "*                                                   *" >> ${LPAD_TWRP_LOG}
+echo "*****************************************************" >> ${LPAD_TWRP_LOG}
+echo "" >> ${LPAD_TWRP_LOG}
 
 # Acer Liquid Z500
 export BRAND="acer"
@@ -145,8 +155,10 @@ echo "**************************************************************************
 echo "TeamWin Recovery ${VERSION} has been successfuly built for all LPAD devices using the ${BRANCH} branch!"
 echo "*******************************************************************************************************"
 echo ""
+
 unset TW_DEVICE_VERSION
 unset DEVICE
 unset BRAND
 unset VERSION
 unset BRANCH
+unset LPAD_TWRP_LOG
