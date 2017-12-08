@@ -63,7 +63,7 @@ then
   if [ "$LOG" == "--log" ]
   then
     echo " Build log                : ${OUT_LOG}"
-	echo ""
+    echo ""
   else
     echo ""
   fi
