@@ -40,6 +40,7 @@ if [ -f "recovery.img" ]
 then
   mv recovery.img ${OUT_RECOVERY_IMAGE}
   cd ../../../..
+  echo "$(date +%Y%m%d-%H%M)-${OUT_RECOVERY_IMAGE}-SUCCESSFUL" >> ${LPAD_TWRP_LOG}
   if [ -f "ftp-afh.sh" ]
   then
     bash ftp-afh.sh
@@ -55,6 +56,7 @@ then
   rm -rf ${BRAND}
   cd ..
 else
+  echo "$(date +%Y%m%d-%H%M)-${OUT_RECOVERY_IMAGE}-FAILED" >> ${LPAD_TWRP_LOG}
   rm ${OUT_LOG}
   make clean
   cd device
